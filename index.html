@@ -8,7 +8,8 @@
 <style>
   * {margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
   body {background: linear-gradient(to bottom right, #ffe6f0, #fff0f5); color:#333; overflow-x:hidden; position:relative;}
-  header {text-align:center; padding:60px 20px; position:relative; z-index:1;}
+  header {text-align:center; padding:0 20px 60px 20px; position:relative; z-index:1;}
+  header img.cover-photo {width:100%; max-height:400px; object-fit:cover; border-bottom:5px solid #ff4d6d; display:block; margin-bottom:20px;}
   header h1 {font-family:'Pacifico', cursive; font-size:3em; color:#ff4d6d; margin-bottom:10px;}
   header #typing {font-size:1.2em; color:#555; min-height:28px;}
   section {padding:50px 20px; text-align:center; position:relative; z-index:1;}
@@ -43,6 +44,9 @@
 </div>
 
 <header>
+  <!-- Cover photo placeholder -->
+  <img src="cover-placeholder.jpg" alt="Cover Photo" class="cover-photo">
+
   <h1>For Sphiwayinkhosi ❤️</h1>
   <div id="typing"></div>
 </header>
