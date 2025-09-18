@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sphiwayinkhosi ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * {margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
+  body {background: linear-gradient(to bottom right, #ffe6f0, #fff0f5); color:#333; overflow-x:hidden; position:relative;}
+  header {text-align:center; padding:60px 20px; position:relative; z-index:1;}
+  header h1 {font-family:'Pacifico', cursive; font-size:3em; color:#ff4d6d; margin-bottom:10px;}
+  header #typing {font-size:1.2em; color:#555; min-height:28px;}
+  section {padding:50px 20px; text-align:center; position:relative; z-index:1;}
+  section h2 {font-family:'Pacifico', cursive; color:#ff4d6d; margin-bottom:20px; font-size:2em;}
+  section p {font-size:1.1em; max-width:600px; margin:0 auto 30px auto; line-height:1.6;}
+  .gallery {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+  .gallery img {width:250px; height:250px; object-fit:cover; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; cursor:pointer;}
+  .gallery img:hover {transform: scale(1.05);}
+  .btn {display:inline-block; background:#ff4d6d; color:#fff; padding:15px 30px; border-radius:50px; text-decoration:none; font-weight:bold; transition:0.3s; cursor:pointer;}
+  .btn:hover {background:#ff1a4d;}
+  footer {text-align:center; padding:30px 20px; font-size:0.9em; color:#999; position:relative; z-index:1;}
+  .floating-heart {position:absolute; font-size:24px; animation: floatUpInfinite linear infinite; opacity:0.7; pointer-events:none;}
+  @keyframes floatUpInfinite {0% {transform: translateY(100vh) rotate(0deg);} 100% {transform: translateY(-100px) rotate(360deg);}}
+  #surpriseMsg {display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(0); background: #fff0f5; border: 3px solid #ff4d6d; padding: 40px; border-radius:20px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); font-size:1.5em; color:#ff4d6d; text-align:center; z-index:1000; transition: transform 0.6s ease;}
+  #surpriseMsg.show {display:block; transform:translate(-50%, -50%) scale(1);}
+  #closeBtn {margin-top:20px; padding:10px 20px; border:none; background:#ff4d6d; color:#fff; border-radius:50px; cursor:pointer; font-weight:bold; transition:0.3s;}
+  #closeBtn:hover {background:#ff1a4d;}
+  .confetti {position:absolute; font-size:20px; animation: confettiFall 3s ease-out forwards;}
+  @keyframes confettiFall {0% {opacity:1; transform: translateY(0) rotate(0deg);} 100% {opacity:0; transform: translateY(-300px) rotate(360deg);}}
+  @media(max-width:768px) {.gallery img {width:80%; height:auto;}}
+</style>
+</head>
+<body>
+
+<!-- Music (hidden, plays only when button is clicked) -->
+<audio id="bg-music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<div style="text-align:center; margin-top:20px;">
+  <button class="btn" onclick="document.getElementById('bg-music').play()">Play Our Song 🎶</button>
+</div>
+
+<header>
+  <h1>For Sphiwayinkhosi ❤️</h1>
+  <div id="typing"></div>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>Hi Sphiwayinkhosi! I’m Nkosingphile. I love making people smile and sharing little moments of happiness. This site is a small way of showing how much you mean to me.</p>
+</section>
+
+<section id="why">
+  <h2>Why I Like You</h2>
+  <p>You make every day brighter, Sphiwayinkhosi. Your smile, your laugh, and just being you makes the world better. I wanted to make something unique just for you to let you know that.</p>
+</section>
+
+<section id="gallery">
+  <h2>Moments</h2>
+  <div class="gallery">
+    <img src="image1.png" alt="Cute memory 1">
+    <img src="image2.png" alt="Cute memory 2">
+    <img src="image3.png" alt="Cute memory 3">
+  </div>
+</section>
+
+<section id="special">
+  <h2>Special Words</h2>
+  <p>Anginawo emagama that could adequately explain how much I LOVE YOU and appreciate having you.</p>
+  <a href="https://www.instagram.com/reel/DOGjiqhjGsU/?igsh=MTlwZTM1N3NycXkwag==" class="btn" target="_blank">💖 Watch This 💖</a>
+</section>
+
+<section id="encouragement">
+  <h2>Encouragement & Support</h2>
+  <p>I am so proud of your amazing journey — from your hard work to graduating university with your degree. This is just the beginning, and I know you’ll continue to shine even brighter. Keep believing in yourself!</p>
+  <div class="gallery">
+    <img src="extra_image.png" alt="Your special picture">
+  </div>
+  <a href="https://www.youtube.com/watch?v=A1vHIguNBZ0" class="btn" target="_blank">🎶 Listen to Mya - Space and Time 🎶</a>
+</section>
+
+<section id="contact">
+  <h2>Say Hi</h2>
+  <p>If you want to reply or just leave a message, click the button below!</p>
+  <!-- Phone number inserted -->
+  <a href="https://wa.me/13853713914" class="btn">Send me a message 💌</a>
+  <br><br>
+  <button onclick="showSurprise()" class="btn">Click me for a surprise 🎁</button>
+</section>
+
+<footer>
+  Made with ❤️ by Nkosingphile
+</footer>
+
+<div id="surpriseMsg">
+  Sphiwayinkhosi, you are amazing and you make my heart so happy! 💕<br>
+  <button id="closeBtn" onclick="hideSurprise()">Close</button>
+</div>
+
+<script>
+const text = "Welcome to my little world, made just for you, Sphiwayinkhosi 💖";
+const typingDiv = document.getElementById('typing');
+let i=0;
+function type() { if(i<text.length){ typingDiv.innerHTML += text.charAt(i); i++; setTimeout(type,100); } }
+type();
+
+const surprise = document.getElementById('surpriseMsg');
+function showSurprise(){ surprise.classList.add('show'); launchConfetti(); }
+function hideSurprise(){ surprise.classList.remove('show'); }
+
+function launchConfetti(){
+  for(let i=0;i<50;i++){
+    const confetti = document.createElement('div');
+    confetti.className='confetti';
+    confetti.style.left = Math.random()*window.innerWidth+'px';
+    confetti.style.fontSize = (15 + Math.random()*25)+'px';
+    confetti.style.color = ['#ff4d6d','#ff66a3','#ff1a4d','#ff80b3'][Math.floor(Math.random()*4)];
+    confetti.innerText='❤️';
+    document.body.appendChild(confetti);
+    setTimeout(()=>{confetti.remove()},3000);
+  }
+}
+
+for(let i=0;i<30;i++){
+  const heart=document.createElement('div');
+  heart.className='floating-heart';
+  heart.style.left = Math.random()*window.innerWidth+'px';
+  heart.style.fontSize = (15 + Math.random()*25)+'px';
+  heart.style.animationDuration = (5 + Math.random()*5)+'s';
+  heart.style.color = ['#ff4d6d','#ff66a3','#ff1a4d','#ff80b3'][Math.floor(Math.random()*4)];
+  heart.innerText='❤️';
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
