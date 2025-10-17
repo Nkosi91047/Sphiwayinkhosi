@@ -37,7 +37,7 @@
   .fade {animation: fade 2s;}
   @keyframes fade {from{opacity:.4} to{opacity:1}}
 
-  /* Days counter */
+  /* Live Days Counter */
   #daysCounter {font-size:1.3em; color:#ff4d6d; font-weight:bold; margin-top:10px;}
 </style>
 </head>
@@ -93,7 +93,7 @@
 <!-- 🌸 New Section: 2 Months of Us -->
 <section id="twoMonths">
   <h2>2 Months of Us 💞</h2>
-  <p>Two months ago, on August 22, 2025, our beautiful story began. Since that day, my world has been brighter, softer, and filled with more laughter — all because of you.</p>
+  <p>Two months ago, on August 22nd, 2025, our beautiful story began. Since that day, my world has been brighter, softer, and filled with more laughter — all because of you.</p>
   <div id="daysCounter"></div>
   <a href="#" class="btn" onclick="showLoveLetter()">💌 Read My Heart 💌</a>
 </section>
@@ -186,24 +186,15 @@ for(let i=0;i<30;i++){
   document.body.appendChild(heart);
 }
 
-// Days counter
+// Live Days Counter
 const startDate = new Date('2025-08-22');
-const today = new Date();
-const diffTime = Math.abs(today - startDate);
-const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-document.getElementById('daysCounter').innerText = `It’s been ${diffDays} beautiful days together 💖`;
+function updateDaysCounter(){
+  const now = new Date();
+  let diff = now - startDate;
 
-// Slideshow
-let slideIndex = 0;
-function showSlides(){
-  let slides = document.getElementsByClassName('slide');
-  for(let j=0;j<slides.length;j++){ slides[j].style.display='none'; }
-  slideIndex++;
-  if(slideIndex > slides.length){ slideIndex=1; }
-  slides[slideIndex-1].style.display='block';
-  setTimeout(showSlides, 3000);
-}
-showSlides();
-</script>
-</body>
-</html>
+  const days = Math.floor(diff / (1000*60*60*24));
+  diff -= days*(1000*60*60*24);
+  const hours = Math.floor(diff / (1000*60*60));
+  diff -= hours*(1000*60*60);
+  const minutes = Math.floor(diff / (1000*60));
+  diff -= minutes*(1000
