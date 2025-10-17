@@ -13,7 +13,7 @@
   header #typing {font-size:1.2em; color:#555; min-height:28px;}
   section {padding:50px 20px; text-align:center; position:relative; z-index:1;}
   section h2 {font-family:'Pacifico', cursive; color:#ff4d6d; margin-bottom:20px; font-size:2em;}
-  section p {font-size:1.1em; max-width:600px; margin:0 auto 30px auto; line-height:1.6;}
+  section p {font-size:1.1em; max-width:650px; margin:0 auto 30px auto; line-height:1.6;}
   .gallery {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
   .gallery img {width:250px; height:250px; object-fit:cover; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; cursor:pointer;}
   .gallery img:hover {transform: scale(1.05);}
@@ -21,22 +21,31 @@
   .btn:hover {background:#ff1a4d;}
   footer {text-align:center; padding:30px 20px; font-size:0.9em; color:#999; position:relative; z-index:1;}
   .floating-heart {position:absolute; font-size:24px; animation: floatUpInfinite linear infinite; opacity:0.7; pointer-events:none;}
-  @keyframes floatUpInfinite {0% {transform: translateY(100vh) rotate(0deg);} 100% {transform: translateY(-100px) rotate(360deg);}}
-  #surpriseMsg {display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(0); background: #fff0f5; border: 3px solid #ff4d6d; padding: 40px; border-radius:20px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); font-size:1.5em; color:#ff4d6d; text-align:center; z-index:1000; transition: transform 0.6s ease;}
-  #surpriseMsg.show {display:block; transform:translate(-50%, -50%) scale(1);}
-  #closeBtn {margin-top:20px; padding:10px 20px; border:none; background:#ff4d6d; color:#fff; border-radius:50px; cursor:pointer; font-weight:bold; transition:0.3s;}
-  #closeBtn:hover {background:#ff1a4d;}
+  @keyframes floatUpInfinite {0% {transform: translateY(100vh) rotate(0deg);} 100% {transform: translateY(-100px) rotate(360deg);} }
+  #surpriseMsg, #loveLetter {display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(0); background: #fff0f5; border: 3px solid #ff4d6d; padding: 40px; border-radius:20px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); font-size:1.5em; color:#ff4d6d; text-align:center; z-index:1000; transition: transform 0.6s ease;}
+  #surpriseMsg.show, #loveLetter.show {display:block; transform:translate(-50%, -50%) scale(1);}
+  #closeBtn, #closeLetter {margin-top:20px; padding:10px 20px; border:none; background:#ff4d6d; color:#fff; border-radius:50px; cursor:pointer; font-weight:bold; transition:0.3s;}
+  #closeBtn:hover, #closeLetter:hover {background:#ff1a4d;}
   .confetti {position:absolute; font-size:20px; animation: confettiFall 3s ease-out forwards;}
-  @keyframes confettiFall {0% {opacity:1; transform: translateY(0) rotate(0deg);} 100% {opacity:0; transform: translateY(-300px) rotate(360deg);}}
+  @keyframes confettiFall {0% {opacity:1; transform: translateY(0) rotate(0deg);} 100% {opacity:0; transform: translateY(-300px) rotate(360deg);} }
   @media(max-width:768px) {.gallery img {width:80%; height:auto;}}
+
+  /* Slideshow */
+  .slideshow-container {position: relative; max-width: 300px; margin: 0 auto;}
+  .slide {display:none;}
+  .slide img {width:100%; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+  .fade {animation: fade 2s;}
+  @keyframes fade {from{opacity:.4} to{opacity:1}}
+
+  /* Days counter */
+  #daysCounter {font-size:1.3em; color:#ff4d6d; font-weight:bold; margin-top:10px;}
 </style>
 </head>
 <body>
 
-<!-- Music (hidden, plays only when button is clicked) -->
+<!-- Music -->
 <audio id="bg-music" loop>
   <source src="song.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 <div style="text-align:center; margin-top:20px;">
   <button class="btn" onclick="document.getElementById('bg-music').play()">Play Our Song 🎶</button>
@@ -81,59 +90,10 @@
   <a href="https://www.youtube.com/watch?v=A1vHIguNBZ0" class="btn" target="_blank">🎶 Listen to Mya - Space and Time 🎶</a>
 </section>
 
-<section id="contact">
-  <h2>Say Hi</h2>
-  <p>If you want to reply or just leave a message, click the button below!</p>
-  <!-- Phone number inserted -->
-  <a href="https://wa.me/13853713914" class="btn">Send me a message 💌</a>
-  <br><br>
-  <button onclick="showSurprise()" class="btn">Click me for a surprise 🎁</button>
+<!-- 🌸 New Section: 2 Months of Us -->
+<section id="twoMonths">
+  <h2>2 Months of Us 💞</h2>
+  <p>Two months ago, on August 2nd, 2025, our beautiful story began. Since that day, my world has been brighter, softer, and filled with more laughter — all because of you.</p>
+  <div id="daysCounter"></div>
+  <a href="#" class="btn" onclick="showLoveLetter()">💌 Read My Heart 💌</a>
 </section>
-
-<footer>
-  Made with ❤️ by Nkosingphile
-</footer>
-
-<div id="surpriseMsg">
-  Sphiwayinkhosi, you are amazing and you make my heart so happy! 💕<br>
-  <button id="closeBtn" onclick="hideSurprise()">Close</button>
-</div>
-
-<script>
-const text = "Welcome to my little world, made just for you, Sphiwayinkhosi 💖";
-const typingDiv = document.getElementById('typing');
-let i=0;
-function type() { if(i<text.length){ typingDiv.innerHTML += text.charAt(i); i++; setTimeout(type,100); } }
-type();
-
-const surprise = document.getElementById('surpriseMsg');
-function showSurprise(){ surprise.classList.add('show'); launchConfetti(); }
-function hideSurprise(){ surprise.classList.remove('show'); }
-
-function launchConfetti(){
-  for(let i=0;i<50;i++){
-    const confetti = document.createElement('div');
-    confetti.className='confetti';
-    confetti.style.left = Math.random()*window.innerWidth+'px';
-    confetti.style.fontSize = (15 + Math.random()*25)+'px';
-    confetti.style.color = ['#ff4d6d','#ff66a3','#ff1a4d','#ff80b3'][Math.floor(Math.random()*4)];
-    confetti.innerText='❤️';
-    document.body.appendChild(confetti);
-    setTimeout(()=>{confetti.remove()},3000);
-  }
-}
-
-for(let i=0;i<30;i++){
-  const heart=document.createElement('div');
-  heart.className='floating-heart';
-  heart.style.left = Math.random()*window.innerWidth+'px';
-  heart.style.fontSize = (15 + Math.random()*25)+'px';
-  heart.style.animationDuration = (5 + Math.random()*5)+'s';
-  heart.style.color = ['#ff4d6d','#ff66a3','#ff1a4d','#ff80b3'][Math.floor(Math.random()*4)];
-  heart.innerText='❤️';
-  document.body.appendChild(heart);
-}
-</script>
-
-</body>
-</html>
