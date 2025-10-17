@@ -37,6 +37,39 @@
   .fade {animation: fade 2s;}
   @keyframes fade {from{opacity:.4} to{opacity:1}}
 
+  /* Arrows */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    margin-top: -22px;
+    color: #ff4d6d;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    user-select: none;
+    transition: 0.3s;
+  }
+  .prev:hover, .next:hover {background: rgba(255,77,109,0.9); color:#fff;}
+  .prev {left: -15px;}
+  .next {right: -15px;}
+
+  /* Dots */
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 3px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .active-dot {background-color: #ff4d6d;}
+
   /* Live Days Counter */
   #daysCounter {font-size:1.3em; color:#ff4d6d; font-weight:bold; margin-top:10px;}
 </style>
@@ -112,6 +145,17 @@
     <div class="slide fade"><img src="slideshow1.png" alt="Memory 1"></div>
     <div class="slide fade"><img src="slideshow2.png" alt="Memory 2"></div>
     <div class="slide fade"><img src="slideshow3.png" alt="Memory 3"></div>
+
+    <!-- Arrows -->
+    <a class="prev" onclick="changeSlide(-1)">❮</a>
+    <a class="next" onclick="changeSlide(1)">❯</a>
+  </div>
+
+  <!-- Dots -->
+  <div style="text-align:center; margin-top:10px;">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
   </div>
 </section>
 
@@ -207,17 +251,28 @@ setInterval(updateDaysCounter, 1000);
 updateDaysCounter();
 
 // Slideshow
-let slideIndex = 0;
-function showSlides() {
-    const slides = document.getElementsByClassName("slide");
-    for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-    slideIndex++;
-    if(slideIndex > slides.length){ slideIndex = 1; }
-    slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 3000);
-}
-showSlides();
+let slideIndex = 1;
+showSlides(slideIndex);
 
+// Next/prev controls
+function changeSlide(n){ showSlides(slideIndex += n); }
+// Dot controls
+function currentSlide(n){ showSlides(slideIndex = n); }
+
+// Main slideshow function
+function showSlides(n){
+  const slides = document.getElementsByClassName("slide");
+  const dots = document.getElementsByClassName("dot");
+  if(n > slides.length){ slideIndex = 1; }
+  if(n < 1){ slideIndex = slides.length; }
+  for(let i=0;i<slides.length;i++){ slides[i].style.display="none"; }
+  for(let i=0;i<dots.length;i++){ dots[i].className=dots[i].className.replace(" active-dot",""); }
+  slides[slideIndex-1].style.display="block";
+  dots[slideIndex-1].className += " active-dot";
+}
+
+// Auto slideshow every 3 seconds
+setInterval(function(){ showSlides(slideIndex += 1); }, 3000);
 </script>
 </body>
 </html>
