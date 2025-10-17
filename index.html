@@ -90,15 +90,13 @@
   <a href="https://www.youtube.com/watch?v=A1vHIguNBZ0" class="btn" target="_blank">🎶 Listen to Mya - Space and Time 🎶</a>
 </section>
 
-<!-- 🌸 New Section: 2 Months of Us -->
 <section id="twoMonths">
   <h2>2 Months of Us 💞</h2>
-  <p>Two months ago, on August 19th, 2025, our beautiful story began. Since that day, my world has been brighter, softer, and filled with more laughter — all because of you.</p>
+  <p>Two months ago, on August 22nd, 2025, our beautiful story began. Since that day, my world has been brighter, softer, and filled with more laughter — all because of you.</p>
   <div id="daysCounter"></div>
   <a href="#" class="btn" onclick="showLoveLetter()">💌 Read My Heart 💌</a>
 </section>
 
-<!-- 💌 Hidden Love Letter -->
 <div id="loveLetter">
   <p>My dearest Sphiwayinkhosi,<br><br>
   Every day with you feels like a new sunrise — gentle, warm, and full of promise. You’ve become my peace, my reason to smile, and my favorite part of every day.  
@@ -108,7 +106,6 @@
   <button id="closeLetter" onclick="hideLoveLetter()">Close</button>
 </div>
 
-<!-- 📸 Mini Slideshow -->
 <section id="slideshow">
   <h2>Our Little Moments 📷</h2>
   <div class="slideshow-container">
@@ -118,7 +115,6 @@
   </div>
 </section>
 
-<!-- 🎵 New Song -->
 <section id="newSong">
   <h2>Our New Song 🎶</h2>
   <p>This song always makes me think of you — every lyric feels like a piece of our story.</p>
@@ -147,7 +143,13 @@
 const text = "Welcome to my little world, made just for you, Sphiwayinkhosi 💖";
 const typingDiv = document.getElementById('typing');
 let i=0;
-function type(){ if(i<text.length){ typingDiv.innerHTML += text.charAt(i); i++; setTimeout(type,100); } }
+function type(){ 
+  if(i<text.length){ 
+    typingDiv.innerHTML += text.charAt(i); 
+    i++; 
+    setTimeout(type,100); 
+  } 
+}
 type();
 
 // Surprise modal
@@ -197,4 +199,25 @@ function updateDaysCounter(){
   const hours = Math.floor(diff / (1000*60*60));
   diff -= hours*(1000*60*60);
   const minutes = Math.floor(diff / (1000*60));
-  diff -= minutes*(1000
+  const seconds = Math.floor(diff % (1000*60)/1000);
+
+  document.getElementById('daysCounter').innerText = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+}
+setInterval(updateDaysCounter, 1000);
+updateDaysCounter();
+
+// Slideshow
+let slideIndex = 0;
+function showSlides() {
+    const slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+    slideIndex++;
+    if(slideIndex > slides.length){ slideIndex = 1; }
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 3000);
+}
+showSlides();
+
+</script>
+</body>
+</html>
